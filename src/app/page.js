@@ -1,5 +1,11 @@
-import Image from "next/image";
+import FriendSection from "./components/FriendSection";
+import Hero from "./components/Hero";
 
 export default function Home() {
-  return <h1>Hello</h1>;
+  return (
+    <div className='container mx-auto'>
+      <Hero />
+      <FriendSection />
+    </div>
+  );
 }

@@ -118,5 +118,29 @@
     "bio": "My go-to person for recipes. We have been best friends since primary school.",
     "goal": 10,
     "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 11,
+    "name": "Mahir Asif",
+    "picture": "https://i.pravatar.cc/150?u=mahir",
+    "email": "mahir.asif@email.com",
+    "days_since_contact": 4,
+    "status": "on-track",
+    "tags": ["Photography", "Travel"],
+    "bio": "Travel vlogger and a great landscape photographer. We often discuss camera gears and editing techniques.",
+    "goal": 14,
+    "next_due_date": "2026-04-26"
+  },
+  {
+    "id": 12,
+    "name": "Sultana Razia",
+    "picture": "https://i.pravatar.cc/150?u=razia",
+    "email": "sultana.r@email.com",
+    "days_since_contact": 10,
+    "status": "overdue",
+    "tags": ["Reading", "Literature"],
+    "bio": "A bookworm friend who manages a local library. We exchange books and review classic novels together.",
+    "goal": 7,
+    "next_due_date": "2026-04-13"
   }
 ]

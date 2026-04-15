@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "KeenKeeper",
-  description: "Keep Track Your Friends Communication",
+  description: "Keep Your Friendships Alive",
 };
 
 export default function RootLayout({ children }) {
@@ -25,11 +26,12 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body
-        className='min-h-full flex flex-col'
+        className='min-h-full flex flex-col bg-[#f8fafc]'
         suppressHydrationWarning={true}
       >
         <NavBar />
-        {children}
+        <main className='grow'>{children}</main>
+        <Footer />
       </body>
     </html>
   );

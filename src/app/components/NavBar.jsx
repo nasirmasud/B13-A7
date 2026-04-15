@@ -1,9 +1,19 @@
+"use client"
+
 import Link from "next/link";
-import { AiOutlineHome } from "react-icons/ai";
 import { LuClock3 } from "react-icons/lu";
 import { GoGraph } from "react-icons/go";
+import { RiHome2Line } from "react-icons/ri";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
+  const pathName = usePathname()
+  const isActive = path => pathName === path
+
+  const activeClass = "bg-[#244d3f] text-white hover:bg-[#1a3a30] px-4 py-2 rounded-sm flex items-center gap-2 font-semibold";
+  const inactiveClass = "border border-transparent bg-[#f8fafc] hover:border-[#244d3f] px-4 py-2 rounded-lg flex items-center gap-2 font-medium text-slate-500 transition-all";
+
+
   return (
     <div className='navbar bg-base-100 shadow-sm container mx-auto'>
       <div className='flex-1'>
@@ -17,9 +27,9 @@ const NavBar = () => {
           <li>
             <Link
               href="/"
-              className="bg-[#244d3f] text-white hover:bg-[#1a3a30] px-4 py-2 rounded-lg flex items-center gap-2 font-semibold"
+              className={isActive("/") ? activeClass : inactiveClass}
             >
-              <AiOutlineHome className="text-xl" />
+              <RiHome2Line className="text-xl" />
               Home
             </Link>
           </li>
@@ -27,7 +37,7 @@ const NavBar = () => {
           <li>
             <Link
               href="/timeline"
-              className="hover:bg-gray-100 px-4 py-2 rounded-lg flex items-center gap-2 font-medium"
+              className={isActive("/timeline") ? activeClass : inactiveClass}
             >
               <LuClock3 className="text-xl" />
               Timeline
@@ -37,7 +47,7 @@ const NavBar = () => {
           <li>
             <Link
               href="/stats"
-              className="hover:bg-gray-100 px-4 py-2 rounded-lg flex items-center gap-2 font-medium"
+              className={isActive("/stats") ? activeClass : inactiveClass}
             >
               <GoGraph className="text-xl" />
               Stats
