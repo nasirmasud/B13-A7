@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import { FriendProvider } from "./context/FriendContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +19,12 @@ export const metadata = {
   description: "Keep Your Friendships Alive",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const res = await fetch("http://localhost:3000/friends.json", {
+    cache: "no-store",
+  });
+  const friends = await res.json();
+
   return (
     <html
       lang='en'
@@ -29,9 +35,11 @@ export default function RootLayout({ children }) {
         className='min-h-full flex flex-col bg-[#f8fafc]'
         suppressHydrationWarning={true}
       >
-        <NavBar />
-        <main className='grow'>{children}</main>
-        <Footer />
+        <FriendProvider initialData={friends}>
+          <NavBar />
+          <main className='grow'>{children}</main>
+          <Footer />
+        </FriendProvider>
       </body>
     </html>
   );
