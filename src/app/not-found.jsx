@@ -9,7 +9,7 @@ export default function NotFound() {
           <h1 className="text-8xl font-black text-[#244d3f] tracking-tighter">404</h1>
           <h2 className="text-2xl font-bold text-gray-800 tracking-tight">Lost in Space?</h2>
           <p className="text-gray-500 font-medium leading-relaxed px-4">
-            The page you're looking for doesn't exist or has been moved to another universe.
+            The page you&apos;re looking for doesn&apos;t exist or has been moved to another universe.
           </p>
         </div>
 
