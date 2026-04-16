@@ -11,7 +11,7 @@ const NavBar = () => {
   const isActive = path => pathName === path
 
   const activeClass = "bg-[#244d3f] text-white hover:bg-[#1a3a30] px-4 py-2 rounded-sm flex items-center gap-2 font-semibold";
-  const inactiveClass = "border border-transparent bg-[#f8fafc] hover:border-[#244d3f] px-4 py-2 rounded-lg flex items-center gap-2 font-medium text-slate-500 transition-all";
+  const inactiveClass = "bg-[#f8fafc] hover:bg-green-100 px-4 py-2 rounded-lg flex items-center gap-2 font-medium text-slate-500 transition-all";
 
 
   return (

@@ -2,22 +2,24 @@
 import { useFriends } from "@/app/context/FriendContext";
 import { PiPhoneCallBold, PiVideoCameraDuotone } from "react-icons/pi";
 import { LuMessageSquareMore } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 export const FriendActions = ({ friendId }) => {
-  // ১. নিশ্চিত হোন interactions ইমপোর্ট করা আছে
   const { addInteraction, interactions = [] } = useFriends();
 
-  // ২. Safe checking যোগ করা হয়েছে (optional chaining ?. ব্যবহার করুন)
   const isActionDone = (type) => {
-    if (!interactions) return false; // যদি interactions না থাকে তবে false
+    if (!interactions) return false;
     return interactions.some(
       (log) => String(log?.friendId) === String(friendId) && log?.type === type
     );
   };
 
   const handleAction = (type) => {
-    if (!isActionDone(type)) {
+    if (isActionDone(type)) {
+      toast.error(`You already logged a ${type} for this friend!`);
+    } else {
       addInteraction(friendId, type);
+      toast.success(`${type} interaction added to timeline!`);
     }
   };
 
@@ -52,7 +54,6 @@ export const FriendActions = ({ friendId }) => {
   );
 };
 
-// এই ActionButton কম্পোনেন্টটিও আপনার ফাইলে থাকতে হবে
 const ActionButton = ({ icon, label, onClick, disabled }) => (
   <button
     onClick={onClick}
