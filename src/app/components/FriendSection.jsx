@@ -1,9 +1,11 @@
-"use client"
-import { useFriends } from '../context/FriendContext';
 import FriendCard from './FriendCard';
 
-export default function FriendsSection() {
-  const friends = useFriends()
+export default async function FriendsSection() {
+  const res = await fetch("http://localhost:3000/friends.json", {
+    cache: "no-store",
+  });
+  const friends = await res.json();
+
 
   return (
     <section className="py-12 px-6 max-w-7xl mx-auto">

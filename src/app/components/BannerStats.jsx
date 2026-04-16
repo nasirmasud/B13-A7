@@ -3,11 +3,14 @@
 import { useFriends } from "../context/FriendContext";
 
 const BannerStats = () => {
-  const friends = useFriends()
+  const { friends } = useFriends();
 
   const totalFriends = friends?.length || 0;
   const onTrack = friends?.filter(f => f.status === "on-track").length || 0;
-  const needAttention = friends?.filter(f => f.status === "overdue" || f.status === "almost due").length || 0;
+
+  const needAttention = friends?.filter(f =>
+    f.status === "overdue" || f.status === "almost due"
+  ).length || 0;
 
   const stats = [
     { label: "Total Friends", value: totalFriends },
