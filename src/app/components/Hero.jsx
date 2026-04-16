@@ -13,7 +13,7 @@ const Hero = () => {
         </p>
       </div>
       <div className="flex justify-center">
-        <button className="bg-[#244d3f] hover:bg-[#1a3a30] text-white px-6 py-3 rounded-lg flex items-center gap-2 font-semibold transition-all shadow-md active:scale-95">
+        <button className="bg-[#244d3f] hover:bg-[#1a3a30] text-white px-6 py-3 rounded-sm flex items-center gap-2 font-semibold transition-all shadow-md active:scale-95">
           <HiPlus className="text-xl" />
           Add a Friend
         </button>

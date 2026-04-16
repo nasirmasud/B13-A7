@@ -20,8 +20,8 @@ const BannerStats = () => {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12 px-6 pt-20 max-w-7xl mx-auto">
       {stats.map((stat, index) => (
         <div key={index} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm text-center">
-          <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-          <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+          <p className="text-3xl font-bold text-[#244d3f]">{stat.value}</p>
+          <p className="text-[18px] text-gray-500 font-medium">{stat.label}</p>
         </div>
       ))}
     </div>

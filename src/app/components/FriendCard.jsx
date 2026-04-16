@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const FriendCard = ({ friend }) => {
   const statusColors = {
@@ -8,7 +9,7 @@ const FriendCard = ({ friend }) => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all border border-gray-100 text-center flex flex-col items-center">
+    <Link href={`/friends/${friend.id}`} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all border border-gray-100 text-center flex flex-col items-center">
       <div className="relative w-24 h-24 mb-4">
         <Image
           src={friend.picture}
@@ -33,7 +34,7 @@ const FriendCard = ({ friend }) => {
       <div className={`mt-auto px-5 py-1.5 rounded-full text-xs font-bold capitalize ${statusColors[friend.status] || "bg-gray-100"}`}>
         {friend.status}
       </div>
-    </div>
+    </Link>
   );
 };
 
