@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FriendActions } from "./FriendActions";
@@ -7,27 +5,12 @@ import { FiTrash2 } from "react-icons/fi";
 import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { PiArchive } from "react-icons/pi";
 
-const getBaseUrl = () => {
-  if (process.env.NEXT_PUBLIC_BASE_URL) return `https://${process.env.NEXT_PUBLIC_BASE_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
-};
+// ১. সরাসরি JSON ফাইলটি ইমপোর্ট করুন
+import friends from "@/public/friends.json";
 
-const getFriends = async () => {
-  try {
-    const baseUrl = getBaseUrl();
-    const res = await fetch(`${baseUrl}/friends.json`, { cache: "no-store" });
-    if (!res.ok) return [];
-    return res.json();
-  } catch (error) {
-    console.error("Fetch error:", error);
-    return [];
-  }
-};
-
+// metadata জেনারেট করার জন্য এখন আর fetch লাগবে না
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const friends = await getFriends();
   const friend = friends.find((f) => String(f.id) === id);
 
   return {
@@ -37,7 +20,8 @@ export async function generateMetadata({ params }) {
 
 const FriendDetailsPage = async ({ params }) => {
   const { id } = await params;
-  const friends = await getFriends();
+
+  // ২. সরাসরি ইমপোর্ট করা অ্যারে থেকে ডাটা খুঁজুন
   const friend = friends.find((f) => String(f.id) === id);
 
   if (!friend) {
@@ -47,7 +31,7 @@ const FriendDetailsPage = async ({ params }) => {
   return (
     <main className="max-w-7xl mx-auto p-6 md:p-12">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
+        {/* Profile Card Section */}
         <div>
           <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center flex flex-col items-center">
             <div className="relative w-32 h-32 mb-4">
@@ -91,6 +75,7 @@ const FriendDetailsPage = async ({ params }) => {
           </div>
         </div>
 
+        {/* Stats and Actions Section */}
         <div className="lg:col-span-2 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <StatBox label="Days Since Contact" value={friend.days_since_contact} />
