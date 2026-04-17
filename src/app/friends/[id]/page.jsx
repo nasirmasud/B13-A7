@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { FriendActions } from "./FriendActions";
@@ -5,10 +7,22 @@ import { FiTrash2 } from "react-icons/fi";
 import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { PiArchive } from "react-icons/pi";
 
+const getBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_BASE_URL) return `https://${process.env.NEXT_PUBLIC_BASE_URL}`;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
+};
+
 const getFriends = async () => {
-  const res = await fetch("http://localhost:3000/friends.json", { cache: "no-store" });
-  if (!res.ok) return [];
-  return res.json();
+  try {
+    const baseUrl = getBaseUrl();
+    const res = await fetch(`${baseUrl}/friends.json`, { cache: "no-store" });
+    if (!res.ok) return [];
+    return res.json();
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return [];
+  }
 };
 
 export async function generateMetadata({ params }) {
