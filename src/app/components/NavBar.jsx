@@ -10,15 +10,14 @@ const NavBar = () => {
   const pathName = usePathname()
   const isActive = path => pathName === path
 
-  const activeClass = "bg-[#244d3f] text-white hover:bg-[#1a3a30] px-4 py-2 rounded-sm flex items-center gap-2 font-semibold";
-  const inactiveClass = "bg-[#f8fafc] hover:bg-green-100 px-4 py-2 rounded-lg flex items-center gap-2 font-medium text-slate-500 transition-all";
-
+  const activeClass = "bg-[#244d3f] text-white hover:bg-[#1a3a30] px-3 md:px-4 py-2 rounded-sm flex items-center gap-2 font-semibold";
+  const inactiveClass = "bg-[#f8fafc] hover:bg-green-100 px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 font-medium text-slate-500 transition-all";
 
   return (
-    <div className='navbar bg-base-100 shadow-sm container mx-auto'>
+    <div className='navbar bg-base-100 shadow-sm container mx-auto px-5'>
       <div className='flex-1'>
-        <Link href="/" className='btn btn-ghost text-black font-extrabold text-2xl'>
-          Keen<span className="text-[#244d3f] font-semibold -ml-1">Keeper</span>
+        <Link href="/" className='text-black font-extrabold text-2xl pl-2'>
+          Keen<span className="text-[#244d3f] font-semibold -1">Keeper</span>
         </Link>
       </div>
       <div className='flex-none'>

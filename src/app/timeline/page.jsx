@@ -34,7 +34,7 @@ const TimelinePage = () => {
   if (!hasMounted) {
     return (
       <main className="max-w-4xl mx-auto p-6 md:p-12 min-h-screen bg-[#f8fafc]">
-        <h1 className="text-4xl font-bold text-[#1e293b] mb-8">Timeline</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-[#1e293b] mb-6 md:mb-8">Timeline</h1>
         <div className="animate-pulse space-y-4">
           <div className="h-20 bg-gray-200 rounded-xl w-full"></div>
           <div className="h-20 bg-gray-200 rounded-xl w-full"></div>
@@ -44,11 +44,11 @@ const TimelinePage = () => {
   }
 
   return (
-    <main className="max-w-4xl mx-auto p-6 md:p-12 min-h-screen bg-[#f8fafc]">
-      <h1 className="text-4xl font-bold text-[#1e293b] mb-8">Timeline</h1>
+    <main className="max-w-4xl mx-auto p-4 md:p-12 min-h-screen bg-[#f8fafc]">
+      <h1 className="text-2xl md:text-4xl font-bold text-[#1e293b] mb-6 md:mb-8">Timeline</h1>
 
-      <div className="mb-6 flex items-center gap-3">
-        <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">Filter by:</label>
+      <div className="mb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+        <label className="text-[12px] md:text-sm font-semibold text-gray-500 uppercase tracking-wider">Filter by:</label>
         <select
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
