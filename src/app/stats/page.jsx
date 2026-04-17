@@ -38,8 +38,8 @@ const StatsPage = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center w-full">
-            <div className="w-full h-75 md:h-100 lg:h-112.5 min-h-75">
-              <ResponsiveContainer width="100%" height="100%">
+            <div className="w-full min-h-100" style={{ minWidth: 0 }}>
+              <ResponsiveContainer width="100%" height={320} minWidth={0} minHeight={0}>
                 <PieChart margin={{ top: 0, right: 0, bottom: 80, left: 0 }}>
                   <Pie
                     data={chartData}
